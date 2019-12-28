@@ -84,16 +84,16 @@ jobs:
 
 workflows:
   version: 2
-    build-check:
-      jobs:
-        #- build-test:
-        #    filters:
-        #      branches:
-        #        only:
-        #          - master
-        - deploy-prod:
-          #requires:
-          #  - build-test
-          filters:
-            branches:
-              only: master
+  build-check:
+    jobs:
+      #- build-test:
+      #    filters:
+      #      branches:
+      #        only:
+      #          - master
+      - deploy-prod:
+        #requires:
+        #  - build-test
+        filters:
+          branches:
+            only: master
