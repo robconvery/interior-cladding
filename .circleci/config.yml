@@ -92,8 +92,9 @@ workflows:
       #        only:
       #          - master
       - deploy-prod:
-        #requires:
-        #  - build-test
-        filters:
-          branches:
-            only: master
+          #requires:
+          #  - build-test
+          filters:
+            branches:
+              only: master
+              
