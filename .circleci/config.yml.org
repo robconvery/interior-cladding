@@ -1,0 +1,50 @@
+version: 2
+
+dependencies:
+  override:
+    - yarn
+
+test:
+  override:
+    - yarn test
+
+jobs:
+
+  deploy-prod:
+
+    docker:
+      - image: circleci/php:7.4-node-browsers
+
+    working_directory: ~/laravel
+
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "5a:b2:c1:87:ac:a8:b2:27:42:20:ff:71:34:b7:df:80"
+      - run:
+          name: install open ssl
+          command: sudo apt-get install openssh-server
+      - run:
+          name: Test existance of .ssh directory
+          command: mkdir -p "/home/circleci/.ssh"
+      - run:
+          name: Deploy if tests pass and branch is Master
+          command: ssh -o StrictHostKeyChecking=no deploy@3.248.171.199 "./deploy"
+
+
+workflows:
+  version: 2
+  build-check:
+    jobs:
+      #- build-test:
+      #    filters:
+      #      branches:
+      #        only:
+      #          - master
+      - deploy-prod:
+          #requires:
+          #  - build-test
+          filters:
+            branches:
+              only: master
+
