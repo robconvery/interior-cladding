@@ -1,20 +1,5 @@
 description = "Default layout"
 ==
-<?php
-use System\Classes\CombineAssets;
-
-public function onRun()
-{
-    $assets = [
-        'assets/vendor/mustache/mustache.js',
-        'assets/vendor/jquery.js',
-        'assets/vendor/bootstrap.js',
-        'assets/javascript/app.js'
-    ];
-    $this->addJs(CombineAssets::combine($assets, $this->assetPath));
-}
-?>
-==
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,10 +7,10 @@ public function onRun()
     <title>{{ this.page.title }}</title>
     <meta name="description" content="{{ this.page.meta_description }}">
     <meta name="title" content="{{ this.page.meta_title }}">
-    <meta name="author" content="OctoberCMS">
+    <meta name="author" content="SNS Coatings">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="OctoberCMS">
-    <link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}">
+    <meta name="generator" content="SNS Coatings">
+    <link rel="icon" type="image/png" href="{{ 'assets/images/favicon-128x128.png'|theme }}">
     <link href="{{ [
         'assets/css/vendor.css',
         'assets/css/theme.css'
