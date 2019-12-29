@@ -1,4 +1,9 @@
 description = "Default layout"
+
+[staticPage]
+useContent = 1
+default = 0
+
 ==
 <!DOCTYPE html>
 <html>
@@ -26,7 +31,9 @@ description = "Default layout"
 
 <!-- Content -->
 <section id="layout-content">
-    {% page %}
+    <div class="container-fluid">
+        {% page %}
+    </div>
 </section>
 
 <!-- Footer -->
